@@ -1,0 +1,71 @@
+<div>
+  <app-widget-area [data]="bigChart"></app-widget-area>
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+
+<br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
+  <mat-card fxFlex="33">
+    <app-widget-cards label="Contagios por mes" percentage="50" [data]="cards"></app-widget-cards>
+  </mat-card>
+  <mat-card fxFlex="33">
+    <app-widget-cards label="Contagios Vespertino" percentage="40" [data]="cards2"></app-widget-cards>
+  </mat-card>
+  <mat-card fxFlex="33">
+    <app-widget-cards label="Contagios Matutino" percentage="30" [data]="cards3"></app-widget-cards>
+  </mat-card>
+  <!-- <mat-card fxFlex="25">
+    <app-widget-cards label="Referral" total="6k" percentage="20" [data]="cards"></app-widget-cards>
+  </mat-card> -->
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+  <div fxFlex="40">
+    <h2 style="text-align: center;">10 Salones con mayor numero de contagios </h2>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Salon">
+          <th mat-header-cell *matHeaderCellDef> Salon </th>
+          <td mat-cell *matCellDef="let element"> {{element.Salon}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Contagios">
+          <th mat-header-cell *matHeaderCellDef> Contagios </th>
+          <td mat-cell *matCellDef="let element"> {{element.Contagios}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Carrera">
+          <th mat-header-cell *matHeaderCellDef> Carrera </th>
+          <td mat-cell *matCellDef="let element"> {{element.Carrera}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </div>
+  </div>
+
+  <div fxFlex="60">
+    <app-widget-pie [data]="pieChart"></app-widget-pie>
+  </div>
+</div>
